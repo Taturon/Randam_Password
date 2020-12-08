@@ -1,1 +1,2 @@
-# Randam_Password
+# Randam_Password v1.0
+指定された長さのランダムパスワードを生成するプログラムです。
