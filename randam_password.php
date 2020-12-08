@@ -25,6 +25,23 @@ $pass = makeRandStr(8);
 	</head>
 	<body>
 		<p>パスワード案<br>&thinsp;<?= $pass ?></p>
-		<button type="button" onclick="location.href=''">生成</button>
+		<form method="POST">
+			<span>パスワードの長さ</span>
+			<br>
+			<select size="1" name="length">
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8" selected="selected">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select>
+			<p>
+				<input type="submit" value="生成">
+			</p>
+		</form>
 	</body>
 </html>
