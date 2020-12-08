@@ -40,7 +40,7 @@ $pass = makeRandStr(8);
 				<option value="12">12</option>
 			</select>
 			<p>
-				<button type="button" onclick="location.href=''">生成</button>
+				<input type="submit" value="生成">
 			</p>
 		</form>
 	</body>
