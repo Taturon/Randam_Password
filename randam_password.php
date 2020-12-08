@@ -25,5 +25,6 @@ $pass = makeRandStr(8);
 	</head>
 	<body>
 		<p>パスワード案<br>&thinsp;<?= $pass ?></p>
+		<button type="button" onclick="location.href=''">生成</button>
 	</body>
 </html>
