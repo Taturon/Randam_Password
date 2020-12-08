@@ -12,7 +12,7 @@ function makeRandStr($length) {
 	}
 	return $r_str;
 }
-$pass = makeRandStr(8);
+$pass = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
 
 ?>
 <!DOCTYPE html>
