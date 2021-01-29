@@ -29,15 +29,9 @@ $pass = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8)
 			<span>パスワードの長さ</span>
 			<br>
 			<select size="1" name="length">
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8" selected="selected">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
+				<?php for ($i = 4; $i <= 12; $i++): ?>
+					<option value="<?= $i ?>"><?= $i ?></option>
+				<?php endfor; ?>
 			</select>
 			<p>
 				<input type="submit" value="生成">
