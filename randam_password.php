@@ -44,6 +44,7 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 			</select>
 			<p>
 				<input type="submit" value="生成">
+				<button type="button" onclick="location.href='/'">戻る</button>
 			</p>
 		</form>
 		<p>
