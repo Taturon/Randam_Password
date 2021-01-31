@@ -26,12 +26,6 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 		<title>ランダムパスワード</title>
 	</head>
 	<body>
-		<p>
-			パスワード案<br>
-			<?php foreach ($passwords as $password): ?>
-				<?= $password ?><br>
-			<?php endforeach; ?>
-		</p>
 		<form method="POST">
 			<span>パスワードの長さ</span>
 			<br>
@@ -40,6 +34,7 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>><?= $i ?></option>
 				<?php endfor; ?>
 			</select>
+			<br>
 			<span>生成個数</span>
 			<br>
 			<select size="1" name="quantity">
@@ -51,5 +46,11 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 				<input type="submit" value="生成">
 			</p>
 		</form>
+		<p>
+			パスワード案<br>
+			<?php foreach ($passwords as $password): ?>
+				<?= $password ?><br>
+			<?php endforeach; ?>
+		</p>
 	</body>
 </html>
