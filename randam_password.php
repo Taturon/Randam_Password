@@ -12,7 +12,9 @@ function makeRandStr($length) {
 	}
 	return $r_str;
 }
-$pass = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
+for ($i = 1; $i <= $_POST['quantity']; $i++) {
+	$passwords[] = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
+}
 
 ?>
 <!DOCTYPE html>
@@ -24,13 +26,25 @@ $pass = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8)
 		<title>ランダムパスワード</title>
 	</head>
 	<body>
-		<p>パスワード案<br>&thinsp;<?= $pass ?></p>
+		<p>
+			パスワード案<br>
+			<?php foreach ($passwords as $password): ?>
+				<?= $password ?><br>
+			<?php endforeach; ?>
+		</p>
 		<form method="POST">
 			<span>パスワードの長さ</span>
 			<br>
 			<select size="1" name="length">
 				<?php for ($i = 4; $i <= 12; $i++): ?>
 					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>><?= $i ?></option>
+				<?php endfor; ?>
+			</select>
+			<span>生成個数</span>
+			<br>
+			<select size="1" name="quantity">
+				<?php for ($i = 1; $i <= 5; $i++): ?>
+					<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>><?= $i ?></option>
 				<?php endfor; ?>
 			</select>
 			<p>
