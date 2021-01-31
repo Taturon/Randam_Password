@@ -30,7 +30,7 @@ $pass = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8)
 			<br>
 			<select size="1" name="length">
 				<?php for ($i = 4; $i <= 12; $i++): ?>
-					<option value="<?= $i ?>"><?= $i ?></option>
+					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>><?= $i ?></option>
 				<?php endfor; ?>
 			</select>
 			<p>
