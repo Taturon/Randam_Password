@@ -20,7 +20,7 @@ function makeRandStr($length) {
  */
 function calculateProbability($length, $quantity) {
 	return (77 ** $length) ** $quantity;
- }
+}
 
 for ($i = 1; $i <= $_POST['quantity']; $i++) {
 	$passwords[] = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
@@ -43,7 +43,9 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 			<br>
 			<select size="1" name="length">
 				<?php for ($i = 4; $i <= 12; $i++): ?>
-					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>><?= $i ?></option>
+					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>>
+						<?= $i ?>
+					</option>
 				<?php endfor; ?>
 			</select>
 			<br>
@@ -51,7 +53,9 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 			<br>
 			<select size="1" name="quantity">
 				<?php for ($i = 1; $i <= 5; $i++): ?>
-					<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>><?= $i ?></option>
+					<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>>
+						<?= $i ?>
+					</option>
 				<?php endfor; ?>
 			</select>
 			<p>
