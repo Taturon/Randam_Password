@@ -23,6 +23,8 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<meta charset="UTF-8">
+		<link rel="apple-touch-icon" type="image/png" href="/favicon/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/favicon/icon-192x192.png">
 		<title>ランダムパスワード</title>
 	</head>
 	<body>
