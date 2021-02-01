@@ -12,6 +12,16 @@ function makeRandStr($length) {
 	}
 	return $r_str;
 }
+
+/**
+ * 重複確率を求める
+ * $length 生成した文字列長
+ * $quantity 生成した文字列の総数
+ */
+function calculateProbability($length, $quantity) {
+	return (77 ** $length) ** $quantity;
+ }
+
 for ($i = 1; $i <= $_POST['quantity']; $i++) {
 	$passwords[] = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
 }
@@ -54,6 +64,12 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 			<?php foreach ($passwords as $password): ?>
 				<?= $password ?><br>
 			<?php endforeach; ?>
+			<?php if ($passwords !== array_unique($passwords)): ?>
+				<small>
+					パスワードが重複しました<br>
+					これは<?= calculateProbability($_POST['length'], count($passwords) - count(array_unique($passwords))) ?>分の一の確率です
+				</small>
+			<?php endif; ?>
 		</p>
 	</body>
 </html>
