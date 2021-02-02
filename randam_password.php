@@ -1,16 +1,35 @@
 <?php
 
 /**
+ * パスワードの元となる文字配列の生成
+ */
+function addChars(array $types) {
+	$chars = [];
+	if (in_array('lower', $types)) {
+		$chars = array_merge($chars, range('a', 'z'));
+	}
+	if (in_array('upper', $types)) {
+		$chars = array_merge($chars, range('A', 'Z'));
+	}
+	if (in_array('symbol', $types)) {
+		$chars = array_merge($chars, ['@', '#', '$', '%', '&', '(', ')', '=', '~', '|', '[', ']', '{', '}', '?']);
+	}
+	if (in_array('number', $types)) {
+		$chars = array_merge($chars, range('0', '9'));
+	}
+	return $chars;
+}
+
+/**
  * ランダム文字列生成 (英数字)
  * $length 生成する文字数
  */
-function makeRandStr($length) {
-	$str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'), ['@', '#', '$', '%', '&', '(', ')', '=', '~', '|', '[', ']', '{', '}', '?']);
-	$r_str = null;
+function makeRandStr($length, array $chars) {
+	$randam_chars = null;
 	for ($i = 0; $i < $length; $i++) {
-		$r_str .= $str[rand(0, count($str) - 1)];
+		$randam_chars .= $chars[rand(0, count($chars) - 1)];
 	}
-	return $r_str;
+	return $randam_chars;
 }
 
 /**
@@ -21,10 +40,11 @@ function makeRandStr($length) {
 function calculateProbability($length, $quantity) {
 	return (77 ** $length) ** $quantity;
 }
-
+$chars = addChars($_POST['types']);
 for ($i = 1; $i <= $_POST['quantity']; $i++) {
-	$passwords[] = isset($_POST['length']) ? makeRandStr($_POST['length']) : makeRandStr(8);
+	$passwords[] = makeRandStr($_POST['length'], $chars);
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -43,19 +63,19 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 				<span>文字種</span>
 				<br>
 				<label>
-					<input type="checkbox" name="type" value="lower">小文字英字
+					<input type="checkbox" name="types[]" value="lower">小文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="type" value="upper">大文字英字
+					<input type="checkbox" name="types[]" value="upper">大文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="type" value="symbol">記号
+					<input type="checkbox" name="types[]" value="symbol">記号
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="type" value="number">数字
+					<input type="checkbox" name="types[]" value="number">数字
 				</label>
 			</p>
 			<p>
