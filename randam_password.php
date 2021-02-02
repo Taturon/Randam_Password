@@ -40,6 +40,25 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 	<body>
 		<form method="POST">
 			<p>
+				<span>文字種</span>
+				<br>
+				<label>
+					<input type="checkbox" name="type" value="lower">小文字英字
+				</label>
+				<br>
+				<label>
+					<input type="checkbox" name="type" value="upper">大文字英字
+				</label>
+				<br>
+				<label>
+					<input type="checkbox" name="type" value="symbol">記号
+				</label>
+				<br>
+				<label>
+					<input type="checkbox" name="type" value="number">数字
+				</label>
+			</p>
+			<p>
 				<span>パスワードの長さ</span>
 				<br>
 				<select size="1" name="length">
