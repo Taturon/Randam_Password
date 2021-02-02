@@ -1,7 +1,10 @@
 <?php
 
 /**
- * パスワードの元となる文字配列の生成
+ * 選択された文字種の配列を生成する
+ *
+ * @param array $types 選択された文字種
+ * @return array 選択された各文字種の配列
  */
 function addChars(array $types) {
 	$chars = [];
@@ -21,10 +24,13 @@ function addChars(array $types) {
 }
 
 /**
- * ランダム文字列生成 (英数字)
- * $length 生成する文字数
+ * ランダム文字列を生成する
+ *
+ * @param int $length 生成する文字列の長さ
+ * @param array $chars 元になる文字の配列
+ * @return string 生成された文字列
  */
-function makeRandStr($length, array $chars) {
+function makeRandStr(int $length, array $chars) {
 	$randam_chars = null;
 	for ($i = 0; $i < $length; $i++) {
 		$randam_chars .= $chars[rand(0, count($chars) - 1)];
@@ -33,18 +39,20 @@ function makeRandStr($length, array $chars) {
 }
 
 /**
- * 重複確率を求める
- * $length 生成した文字列長
- * $quantity 生成した文字列の総数
+ * 場合の数を求める
+ *
+ * @param int $length 生成した文字列長
+ * @param int $quantity 生成した文字列の総数
+ * @return int 場合の数
  */
-function calculateProbability($length, $quantity) {
+function calculateProbability(int $length, int $quantity) {
 	return (77 ** $length) ** $quantity;
 }
+
 $chars = addChars($_POST['types']);
 for ($i = 1; $i <= $_POST['quantity']; $i++) {
 	$passwords[] = makeRandStr($_POST['length'], $chars);
 }
-
 
 ?>
 <!DOCTYPE html>
