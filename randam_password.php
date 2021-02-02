@@ -39,25 +39,28 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 	</head>
 	<body>
 		<form method="POST">
-			<span>パスワードの長さ</span>
-			<br>
-			<select size="1" name="length">
-				<?php for ($i = 4; $i <= 12; $i++): ?>
-					<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>>
-						<?= $i ?>
-					</option>
-				<?php endfor; ?>
-			</select>
-			<br>
-			<span>生成個数</span>
-			<br>
-			<select size="1" name="quantity">
-				<?php for ($i = 1; $i <= 5; $i++): ?>
-					<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>>
-						<?= $i ?>
-					</option>
-				<?php endfor; ?>
-			</select>
+			<p>
+				<span>パスワードの長さ</span>
+				<br>
+				<select size="1" name="length">
+					<?php for ($i = 4; $i <= 12; $i++): ?>
+						<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>>
+							<?= $i ?>
+						</option>
+					<?php endfor; ?>
+				</select>
+			</p>
+			<p>
+				<span>生成個数</span>
+				<br>
+				<select size="1" name="quantity">
+					<?php for ($i = 1; $i <= 5; $i++): ?>
+						<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>>
+							<?= $i ?>
+						</option>
+					<?php endfor; ?>
+				</select>
+			</p>
 			<p>
 				<input type="submit" value="生成">
 				<button type="button" onclick="location.href='/'">戻る</button>
