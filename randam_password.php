@@ -49,9 +49,11 @@ function calculateProbability(int $length, int $quantity) {
 	return (77 ** $length) ** $quantity;
 }
 
-$chars = addChars($_POST['types']);
-for ($i = 1; $i <= $_POST['quantity']; $i++) {
-	$passwords[] = makeRandStr($_POST['length'], $chars);
+if (isset($_POST['types'], $_POST['length'])) {
+	$chars = addChars($_POST['types']);
+	for ($i = 1; $i <= $_POST['quantity']; $i++) {
+		$passwords[] = makeRandStr($_POST['length'], $chars);
+	}
 }
 
 ?>
@@ -71,19 +73,19 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 				<span>文字種</span>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="lower">小文字英字
+					<input type="checkbox" name="types[]" value="lower" <?php if (!isset($_POST['types']) || in_array('lower', $_POST['types'])) echo 'checked'; ?>>小文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="upper">大文字英字
+					<input type="checkbox" name="types[]" value="upper" <?php if (!isset($_POST['types']) || in_array('upper', $_POST['types'])) echo 'checked'; ?>>大文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="symbol">記号
+					<input type="checkbox" name="types[]" value="symbol" <?php if (!isset($_POST['types']) || in_array('symbol', $_POST['types'])) echo 'checked'; ?>>記号
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="number">数字
+					<input type="checkbox" name="types[]" value="number" <?php if (!isset($_POST['types']) || in_array('number', $_POST['types'])) echo 'checked'; ?>>数字
 				</label>
 			</p>
 			<p>
@@ -91,7 +93,7 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 				<br>
 				<select size="1" name="length">
 					<?php for ($i = 4; $i <= 12; $i++): ?>
-						<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected' ?>>
+						<option value="<?= $i ?>" <?php if (isset($_POST['length']) && $_POST['length'] == $i) echo 'selected'; ?>>
 							<?= $i ?>
 						</option>
 					<?php endfor; ?>
@@ -102,7 +104,7 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 				<br>
 				<select size="1" name="quantity">
 					<?php for ($i = 1; $i <= 5; $i++): ?>
-						<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected' ?>>
+						<option value="<?= $i ?>" <?php if (isset($_POST['quantity']) && $_POST['quantity'] == $i) echo 'selected'; ?>>
 							<?= $i ?>
 						</option>
 					<?php endfor; ?>
@@ -121,7 +123,7 @@ for ($i = 1; $i <= $_POST['quantity']; $i++) {
 			<?php if ($passwords !== array_unique($passwords)): ?>
 				<small>
 					パスワードが重複しました<br>
-					これは<?= calculateProbability($_POST['length'], count($passwords) - count(array_unique($passwords))) ?>分の一の確率です
+					これは<?= calculateProbability($_POST['length'], count($passwords) - count(array_unique($passwords))); ?>分の一の確率です
 				</small>
 			<?php endif; ?>
 		</p>
