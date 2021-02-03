@@ -41,12 +41,13 @@ function makeRandStr(int $length, array $chars) {
 /**
  * 場合の数を求める
  *
+ * @param int $chars 生成元の文字配列の文字数
  * @param int $length 生成した文字列長
  * @param int $quantity 生成した文字列の総数
  * @return int 場合の数
  */
-function calculateProbability(int $length, int $quantity) {
-	return (77 ** $length) ** $quantity;
+function calculateProbability(int $chars, int $length, int $quantity) {
+	return ($chars ** $length) ** $quantity;
 }
 
 if (isset($_POST['types'], $_POST['length'])) {
@@ -123,7 +124,7 @@ if (isset($_POST['types'], $_POST['length'])) {
 			<?php if ($passwords !== array_unique($passwords)): ?>
 				<small>
 					パスワードが重複しました<br>
-					これは<?= calculateProbability($_POST['length'], count($passwords) - count(array_unique($passwords))); ?>分の一の確率です
+					これは<?= calculateProbability(count($chars), $_POST['length'], count($passwords) - count(array_unique($passwords))); ?>分の一の確率です
 				</small>
 			<?php endif; ?>
 		</p>
