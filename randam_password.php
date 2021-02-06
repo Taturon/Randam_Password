@@ -85,7 +85,7 @@ if (isset($_POST['types'], $_POST['length'])) {
 				<br>
 				<label>
 					<input type="checkbox" name="types[]" value="symbol" <?php if (!isset($_POST['types']) || in_array('symbol', $_POST['types'])) echo 'checked'; ?>>
-					記号
+					記号（@, #, $, %, &, =, ~, |, !, ?, (, ), [, ], {, }, <, >）
 				</label>
 				<br>
 				<label>
