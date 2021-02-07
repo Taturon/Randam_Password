@@ -74,19 +74,23 @@ if (isset($_POST['types'], $_POST['length'])) {
 				<span>文字種</span>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="lower" <?php if (!isset($_POST['types']) || in_array('lower', $_POST['types'])) echo 'checked'; ?>>小文字英字
+					<input type="checkbox" name="types[]" value="lower" <?php if (!isset($_POST['types']) || in_array('lower', $_POST['types'])) echo 'checked'; ?>>
+					小文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="upper" <?php if (!isset($_POST['types']) || in_array('upper', $_POST['types'])) echo 'checked'; ?>>大文字英字
+					<input type="checkbox" name="types[]" value="upper" <?php if (!isset($_POST['types']) || in_array('upper', $_POST['types'])) echo 'checked'; ?>>
+					大文字英字
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="symbol" <?php if (!isset($_POST['types']) || in_array('symbol', $_POST['types'])) echo 'checked'; ?>>記号
+					<input type="checkbox" name="types[]" value="symbol" <?php if (!isset($_POST['types']) || in_array('symbol', $_POST['types'])) echo 'checked'; ?>>
+					記号（@, #, $, %, &, =, ~, |, !, ?, (, ), [, ], {, }, <, >）
 				</label>
 				<br>
 				<label>
-					<input type="checkbox" name="types[]" value="number" <?php if (!isset($_POST['types']) || in_array('number', $_POST['types'])) echo 'checked'; ?>>数字
+					<input type="checkbox" name="types[]" value="number" <?php if (!isset($_POST['types']) || in_array('number', $_POST['types'])) echo 'checked'; ?>>
+					数字
 				</label>
 			</p>
 			<p>
