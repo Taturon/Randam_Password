@@ -1,4 +1,4 @@
-# Randam_Password v1.2
+# Randam_Password v1.3
 指定された文字種／長さ／個数のランダムパスワードを生成するプログラムです。
 
 選択可能な項目
