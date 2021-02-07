@@ -15,7 +15,7 @@ function addChars(array $types) {
 		$chars = array_merge($chars, range('A', 'Z'));
 	}
 	if (in_array('symbol', $types)) {
-		$chars = array_merge($chars, ['@', '#', '$', '%', '&', '=', '~', '|', '!', '?', '(', ')', '[', ']', '{', '}', '<', '>']);
+		$chars = array_merge($chars, ["&commat;", "&num;", "&dollar;", "&percnt;", "&amp;", "&equals;", "&#126;", "&verbar;", "&excl;", "&quest;", "&lpar;", "&rpar;", "&lbrack;", "&rbrack;", "&lcub;", "&rcub;", "&lt;", "&gt;"]);
 	}
 	if (in_array('number', $types)) {
 		$chars = array_merge($chars, range('0', '9'));
